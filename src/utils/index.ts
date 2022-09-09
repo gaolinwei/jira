@@ -18,11 +18,23 @@ export const useMount = (callback:()=>void) => {
     }, [])
 }
 //防抖
-export const useDebounce =<T> (value:T, delay:number):T => {
+export const useDebounce =<T> (value:T, delay:number) => {
     const [debounceValue, setDebounceValue] = useState(value)
     useEffect(() => {
         const timer = setTimeout(() => setDebounceValue(value), delay)
         return () => clearTimeout(timer)
     }, [value, delay])
     return debounceValue
+}
+
+export const UseArray = <T>(initialArray:T[])=>{
+    const [value,setValue] = useState(initialArray)
+     return {
+        value,
+        setValue,
+        add:(item:T)=>setValue([...value,item]),
+        clear:()=>setValue([]),
+        removeIndex:(index:number)=>setValue(value.filter((v,i)=>i!==index))
+     }
+    
 }
