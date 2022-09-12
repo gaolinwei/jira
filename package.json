@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server _json_server_mock_/db.json --watch --port 8000"
+    "server": "json-server _json_server_mock_/db.json --watch --port 8000 --middlewares ./_json_server_mock_/middleware.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +44,8 @@
   },
   "devDependencies": {
     "json-server": "^0.17.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

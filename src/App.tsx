@@ -1,11 +1,13 @@
 import React from 'react';
 import { ProjectListScreen } from './screens/project-list';
-import {Test} from './screens/test'
+import { Test } from './screens/test'
+import { LoginScreen } from './screens/login'
 function App() {
   return (
     <div className="App">
       {/* <ProjectListScreen /> */}
-      <Test/>
+      {/* <Test/> */}
+      <LoginScreen />
     </div>
   );
 }
