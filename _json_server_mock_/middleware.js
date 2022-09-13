@@ -11,5 +11,17 @@ module.exports = (req, res, next) => {
             return res.status(400).json({ message: "用户名或者密码错误" })
         }
     }
+    if (req.method === "POST" && req.path === "/register") {
+        if (req.body.username === "jack" && req.body.password === "123456") {
+            return res.status(200).json({
+                user: {
+                    token: '123',
+                    name: "jack"
+                }
+            })
+        } else {
+            return res.status(400).json({ message: "用户名或者密码错误" })
+        }
+    }
     next()
 }
