@@ -3,6 +3,7 @@ import { List } from "./list"
 import React, { useState, useEffect } from "react"
 import { cleanObj, useMount, useDebounce } from '../../utils'
 import * as qs from "qs"
+import { useHttp } from "../../utils/http"
 const apiUrl = "http://localhost:8000"
 export const ProjectListScreen = () => {
     const [param, setParam] = useState({
@@ -12,15 +13,18 @@ export const ProjectListScreen = () => {
     const [list, setList] = useState([])
     const [users, setUsers] = useState([])
     const debounceParam = useDebounce(param, 500)
+    const client = useHttp()
     useEffect(() => {
-        fetch(`${apiUrl}/projects?${qs.stringify(cleanObj(debounceParam))}`).then(async (res: Response) => {
+        client('projects', { data: cleanObj(debounceParam) }).then(async (res: Response) => {
+            console.log(res, "000000000000000000000");
+
             if (res.ok) {
                 setList(await res.json())
             }
         })
     }, [debounceParam])
     useMount(() => {
-        fetch(`${apiUrl}/users`).then(async (res: Response) => {
+        client('users').then(async (res: Response) => {
             if (res.ok) {
                 setUsers(await res.json())
             }
