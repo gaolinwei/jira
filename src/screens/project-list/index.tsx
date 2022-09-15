@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { cleanObj, useMount, useDebounce } from '../../utils'
 import * as qs from "qs"
 import { useHttp } from "../../utils/http"
+import styled from "@emotion/styled"
 const apiUrl = "http://localhost:8000"
 export const ProjectListScreen = () => {
     const [param, setParam] = useState({
@@ -16,8 +17,6 @@ export const ProjectListScreen = () => {
     const client = useHttp()
     useEffect(() => {
         client('projects', { data: cleanObj(debounceParam) }).then(async (res: Response) => {
-            console.log(res, "000000000000000000000");
-
             if (res.ok) {
                 setList(await res.json())
             }
@@ -30,8 +29,12 @@ export const ProjectListScreen = () => {
             }
         })
     })
-    return <div>
+    return <Container>
+        <h1>项目列表</h1>
         <SearchPanel param={param} setParam={setParam} users={users}></SearchPanel>
         <List users={users} list={list}></List>
-    </div>
+    </Container>
 }
+const Container = styled.div`
+    padding: 3.2rem;
+`

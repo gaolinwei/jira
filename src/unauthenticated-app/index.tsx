@@ -7,20 +7,20 @@ import logo from '../assets/logo.svg'
 import left from '../assets/left.svg'
 import right from '../assets/right.svg'
 export const UnauthenticatedApp = () => {
-    const [isRegister, setIsRegister] = useState(false)
-    return <Container>
-        <Header />
-        <Background />
-        <Card>
-            <Title>{isRegister ? "请注册" : "请登录"}</Title>
-            {
-                isRegister ? <RegisterScreen /> : <LoginScreen />
-            }
-            <Divider />
-            <a onClick={() => setIsRegister(!isRegister)}>切换到{isRegister ? '登入' : '注册'}</a>
-        </Card>
+  const [isRegister, setIsRegister] = useState(false)
+  return <Container>
+    <Header />
+    <Background />
+    <Card>
+      <Title>{isRegister ? "请注册" : "请登录"}</Title>
+      {
+        isRegister ? <RegisterScreen /> : <LoginScreen />
+      }
+      <Divider />
+      <Button type={"link"} onClick={() => setIsRegister(!isRegister)}>切换到{isRegister ? '登入' : '注册'}</Button>
+    </Card>
 
-    </Container>
+  </Container>
 }
 export const LongButton = styled(Button)`
     width: 100%;
