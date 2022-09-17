@@ -3,12 +3,16 @@ import React, { FormEvent, HtmlHTMLAttributes } from "react";
 import { Form, Input, Button } from "antd"
 import { LongButton } from "./index"
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ onError }: { onError: (error: Error) => void }) => {
     const apiUrl = "http://localhost:8000"
     const { login, user } = UserAuth()
 
-    const handLeSubmit = (valus: { username: string, password: string }) => {
-        login(valus)
+    const handLeSubmit = async (valus: { username: string, password: string }) => {
+        try {
+            await login(valus)
+        } catch (e: any) {
+            onError(e)
+        }
     }
 
 

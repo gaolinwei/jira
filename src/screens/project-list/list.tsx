@@ -1,27 +1,29 @@
 import React from "react"
-import { Table } from 'antd'
+import { Table, TableProps } from 'antd'
 import dayjs from "dayjs";
-interface Project {
+export interface Project {
     id: string,
     name: string,
     personId: string,
     pin: boolean,
     organization: string,
     created: number;
+    isLoading: boolean
 }
 interface User {
     name: string,
     id: string,
     email: string,
     title: string,
-    organization: string
+    organization: string,
 }
-interface ListProps {
+interface ListProps extends TableProps<Project> {
     list: Project[],
     users: User[]
 }
-export const List = ({ list, users }: ListProps) => {
-    return <Table pagination={false} columns={[{
+
+export const List = ({ list, users, loading }: ListProps) => {
+    return <Table loading={loading} pagination={false} columns={[{
         title: '名称',
         dataIndex: 'name',
         sorter: (a, b) => a.name.localeCompare(b.name)
