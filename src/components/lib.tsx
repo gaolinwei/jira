@@ -27,3 +27,7 @@ const FullPage = styled.div`
 export const FullPageLoading = () => <FullPage>
     <Spin size={"large"}></Spin>
 </FullPage>
+
+export const newError = () => <FullPage>
+    <h1>报错了!!</h1>
+</FullPage>

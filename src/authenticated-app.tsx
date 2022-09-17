@@ -8,8 +8,6 @@ import { Button, Dropdown, Menu } from "antd"
 
 export const AuthenticatedApp = () => {
     const { logout, user } = UserAuth()
-    console.log(user, "user");
-
     return <Container>
         <Header between={true}>
             <HeaderLeft gap={true}>
