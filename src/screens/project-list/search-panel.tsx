@@ -29,7 +29,7 @@ export const SearchPanel = ({ param, setParam, users }: SearchPanelProps | any) 
         </Form.Item>
         <Form.Item>
             <Select value={param.children} defaultValue={"请选择"} onChange={(value, param: any) => setParam({
-                ...param,
+                // ...param,
                 personId: value,
             })}>
                 <Select.Option value={''}>请选择</Select.Option>

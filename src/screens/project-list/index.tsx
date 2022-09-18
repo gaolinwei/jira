@@ -7,12 +7,14 @@ import { useHttp } from "../../utils/http"
 import styled from "@emotion/styled"
 import { Typography } from "antd"
 import { useAsync } from "utils/use-async"
+import { useUrlQueryParam } from "utils/url"
 const apiUrl = "http://localhost:8000"
 export const ProjectListScreen = () => {
-    const [param, setParam] = useState({
-        name: '',
-        personId: ''
-    })
+    // const [setParam] = useState({
+    //     name: '',
+    //     personId: ''
+    // })
+    const [param, setParam] = useUrlQueryParam(['name', 'personId'])
     const [users, setUsers] = useState([])
     const debounceParam = useDebounce(param, 500)
     const [list, setList] = useState([])
