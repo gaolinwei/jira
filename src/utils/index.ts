@@ -38,3 +38,6 @@ export const UseArray = <T>(initialArray: T[]) => {
     }
 
 }
+export const restRoute = () => {
+    window.location.href = window.location.origin
+}
